@@ -23,7 +23,7 @@ const createUsuario = (req,res) =>{
     const {nombre, edad, lugarProcedencia} = req.body;
 
     if (!nombre || !edad || !lugarProcedencia) {
-        return res.status(400).json({ mensaje: 'Faltan datos'}):
+        return res.status(404).json({ mensaje: 'Faltan datos'});
     }
 
     const nuevoUsuario = {
@@ -47,7 +47,7 @@ const { edad, lugarProcedencia} = req.body;
 const index = usuarios.findIndex(u=>u.nombre === nombre);
 
 if(index === -1) {
-    return res.status(404).json({'Usuario no encontrado'});
+    return res.status(404).json({ mensaje: 'Usuario no encontrado' });
 }
 
 if(edad) usuarios[index].edad = edad;
